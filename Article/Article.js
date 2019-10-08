@@ -112,3 +112,57 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+
+const createArticle = function (art) {
+  // CREATE ELEMENTS
+  const article = document.createElement('div');
+  const artTitle = document.createElement('h2');
+  const artDate = document.createElement('p');
+  const artPar1 = document.createElement('p');
+  const artPar2 = document.createElement('p');
+  const artPar3 = document.createElement('p');
+  const artButton = document.createElement('span');
+  //GIVE THEM CLASSES
+  article.classList.add('article');
+  artDate.classList.add('date');
+  artButton.classList.add('expandButton');
+  //NEST THEM
+  article.appendChild(artTitle);
+  article.appendChild(artDate);
+  article.appendChild(artPar1);
+  article.appendChild(artPar2);
+  article.appendChild(artPar3);
+  article.appendChild(artButton);
+  //TEXT CONTENT
+  artTitle.textContent=art.title;
+  artDate.textContent=art.date;
+  artPar1.textContent=art.firstParagraph;
+  artPar2.textContent=art.secondParagraph;
+  artPar3.textContent=art.thirdParagraph;
+  artButton.textContent='Expand';
+  //EVENT LISTENER
+  artButton.addEventListener('click', function(){
+    article.classList.toggle('article-open');
+  })
+  return article;
+}
+
+const container = document.querySelector('.articles');
+
+const newArticle = {
+  title: 'This is a title', 
+  date: '1/1/11', 
+  firstParagraph: 'Hella hot chicken vaporware tilde. Trust fund gentrify fam +1 ethical godard taxidermy kale chips put a bird on it hexagon chambray man braid. Ugh franzen af retro, kogi tacos umami viral YOLO 3 wolf moon next level. Shoreditch man braid cray mumblecore jianbing air plant thundercats authentic vinyl 90s craft beer hammock photo booth asymmetrical hot chicken. Sustainable synth biodiesel, celiac vice copper mug tbh ethical cray locavore readymade vexillologist edison bulb. Kitsch pinterest cred fanny pack iceland readymade. Live-edge stumptown taiyaki chillwave before they sold out, vegan hella tousled vexillologist glossier kinfolk poke unicorn four dollar toast hashtag.',
+  secondParagraph: 'hipsukjhasdfl ka kjhasd f',
+  thirdParagraph: 'fadfasdfasdf',
+}
+
+data.push(newArticle);
+
+data.forEach((datum)=>{
+  container.append(createArticle(datum));
+});
+
+
+
