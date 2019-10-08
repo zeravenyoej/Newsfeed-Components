@@ -85,6 +85,12 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  }, {
+    title: 'I wrote my own article',
+    date: 'July 18th, 1988',
+    firstParagraph: 'blah blah blah',
+    secondParagraph: 'more blah blah blah',
+    thirdParagraph: 'even more blah blah blah'
   }
 ];
 
@@ -112,3 +118,59 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+
+
+
+function createArticle(title, date, firstParagraph, secondParagraph, thirdParagraph){
+  
+  //create elements
+  const art = document.createElement('div');
+  const artTitle = document.createElement('h2');
+  const artDate = document.createElement('p');
+  const artPar1 = document.createElement('p');
+  const artPar2 = document.createElement('p');
+  const artPar3 = document.createElement('p');
+  const artButton = document.createElement('span');
+
+  //set up structure of elements
+  art.appendChild(artTitle);
+  art.appendChild(artDate);
+  art.appendChild(artDate);
+  art.appendChild(artPar1);
+  art.appendChild(artPar2);
+  art.appendChild(artPar3);
+  art.appendChild(artButton);
+
+  //set class names
+  art.classList.add('article');
+  artDate.classList.add('date');
+  artButton.classList.add('expandButton');
+
+  //set text content
+  artTitle.textContent = title;
+  artDate.textContent = date;
+  artPar1.textContent = firstParagraph;
+  artPar2.textContent = secondParagraph;
+  artPar3.textContent = thirdParagraph;
+  artButton.textContent = 'Expand';
+
+  //set event listener 
+  const toggle = function (event) {
+    art.classList.toggle('article-open');
+  }
+  artButton.addEventListener('click', toggle)
+
+  //return statement
+  return art
+}
+
+
+window.addEventListener('load', (event)=>{
+  const artDiv = document.querySelector('.articles');
+  data.map(datum => {
+    artDiv.appendChild(createArticle(
+      datum.title, datum.date, datum.firstParagraph, datum.secondParagraph, datum.thirdParagraph
+    ))
+  })
+})
