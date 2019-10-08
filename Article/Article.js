@@ -128,12 +128,12 @@ const createArticle = function (art) {
   artDate.classList.add('date');
   artButton.classList.add('expandButton');
   //NEST THEM
-  article.appendChild(artTitle);
-  article.appendChild(artDate);
-  article.appendChild(artPar1);
-  article.appendChild(artPar2);
-  article.appendChild(artPar3);
-  article.appendChild(artButton);
+  article.append(artTitle);
+  article.append(artDate);
+  article.append(artPar1);
+  article.append(artPar2);
+  article.append(artPar3);
+  article.append(artButton);
   //TEXT CONTENT
   artTitle.textContent=art.title;
   artDate.textContent=art.date;
